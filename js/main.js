@@ -11,8 +11,7 @@ const app = Vue.createApp({
             user2TypeTimer: null,
 
             messages: [
-                /*
-                {
+                /*{
                     id     : 1,
                     user   : 1,
                     content: 'Hello User2!'
@@ -29,10 +28,9 @@ const app = Vue.createApp({
                 },
                 {
                     id     : 4,
-                    user   : 1,
+                    user   : 2,
                     content: 'Fine too!'
-                },
-                */
+                }*/
             ]
         }
     },
