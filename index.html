@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Meswenger</title>
+    <link rel="stylesheet" href="dist/bootstrap-5.2.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="dist/vue-3.3.4/vue.global.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <div id="app" v-cloak>
+
+            <!-- USER 1 -->
+            <div>
+                <!-- USER 1 Header -->
+                <div class="p-3 d-flex align-items-center">
+                    <h4 class="m-0">USER 1</h4>
+                </div>
+
+                <!-- USER 1 Messages -->
+                <div class="messages p-3">
+                    <div
+                        v-for="(message, messageIndex) in messages"
+                        :key="message.id"
+                        class="d-flex"
+                        :class="{
+                            'justify-content-end'  : (message.user === 1),
+                            'justify-content-start': (message.user === 2)
+                        }"
+                    >
+                        <div
+                            class="alert"
+                            :class="{
+                                'alert-primary'  : (message.user === 1),
+                                'alert-secondary': (message.user === 2)
+                            }"
+                        >
+                            {{ message.content }}
+                        </div>
+                    </div>
+                    <!-- USER 2 Typing Indicator -->
+                    <small v-if="user2Typing" class="fst-italic text-secondary">User 2 is typing...</small>
+                </div>
+
+                <!-- USER 1 Inputs -->
+                <div class="inputs p-3 d-flex">
+                    <textarea @keydown="setUser1Typing" @blur="user1Typing = false"  v-model="message1" class="form-control" placeholder="Enter your message."></textarea>
+                    <button class="btn btn-primary" @click="sendMessage1">SEND</button>
+                </div>
+            </div>
+
+            <!-- USER 2 -->
+            <div>
+                <!-- USER 2 Header -->
+                <div class="p-3 d-flex align-items-center">
+                    <h4 class="m-0">USER 2</h4>
+                </div>
+
+                <!-- USER 2 Messages-->
+                <div class="messages p-3">
+                    <div
+                        v-for="(message, messageIndex) in messages"
+                        :key="message.id"
+                        class="d-flex"
+                        :class="{
+                            'justify-content-end'  : (message.user === 2),
+                            'justify-content-start': (message.user === 1)
+                        }"
+                    >
+                        <div
+                                class="alert"
+                                :class="{
+                                'alert-primary'  : (message.user === 2),
+                                'alert-secondary': (message.user === 1)
+                            }"
+                        >
+                            {{ message.content }}
+                        </div>
+                    </div>
+                    <!-- USER 1 Typing Indicator -->
+                    <small v-if="user1Typing" class="fst-italic text-secondary">User 1 is typing...</small>
+                </div>
+
+                <!-- USER 2 INPUTS-->
+                <div class="inputs p-3 d-flex">
+                    <textarea @keydown="setUser2Typing" @blur="user2Typing = false"  v-model="message2" class="form-control" placeholder="Enter your message."></textarea>
+                    <button class="btn btn-primary" @click="sendMessage2">SEND</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Script -->
+    <script src="js/main.js"></script>
+</body>
+</html>

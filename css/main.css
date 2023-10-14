@@ -1,0 +1,48 @@
+[v-cloak] {
+    display: none;
+}
+
+body {
+    background-color: #eee;
+}
+
+.wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    min-height: 640px;
+    padding: 0 15px;
+}
+
+#app {;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 20px;
+    width: 100%;
+}
+
+#app > div {
+    display: grid;
+    grid-template-rows: 60px 500px 80px;
+    background-color: #fff;
+    border-radius: 6px;
+    border: 2px solid #fff;
+}
+
+#app .messages {
+    overflow-y: scroll;
+}
+
+#app .inputs textarea {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#app .inputs button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
